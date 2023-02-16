@@ -1,8 +1,10 @@
 package com.practice.studentproject.service;
 
+import com.practice.studentproject.model.Contact;
 import com.practice.studentproject.model.Course;
 import com.practice.studentproject.model.School;
 import com.practice.studentproject.model.Student;
+import com.practice.studentproject.repository.ContactRepository;
 import com.practice.studentproject.repository.CourseRepository;
 import com.practice.studentproject.repository.StudentRepository;
 import jakarta.transaction.Transactional;
@@ -17,6 +19,9 @@ public class StudentService {
 
     @Autowired
     StudentRepository studentRepository;
+
+    @Autowired
+    ContactRepository contactRepository;
 
     @Autowired
     CourseRepository courseRepository;
@@ -75,18 +80,35 @@ public class StudentService {
         return studentRepository.save(student);
     }
 
+    public Student addContactToStudent(long student_id, long contact_id) {
+        if (!studentRepository.existsById(student_id) || !contactRepository.existsById(contact_id)) {
+            return null;
+        }
 
-//    public Student addCourseToStudent(long id, Course course) {
-//        if (!studentRepository.existsById(id)) {
-//            return null;
-//        }
-//
-//        Student student = studentRepository.findById(id).get();
-//        Course tempCourse = courseRepository.addCourseToStudent(course, student);
-//
-//        student.getCourses().add(tempCourse);
-//
-//        return studentRepository.save(student);
-//    }
+        Student student = studentRepository.findById(student_id).get();
+        Contact contact = contactRepository.findById(contact_id).get();
+
+        student.setContact(contact);
+        contact.setStudent(student);
+        contactRepository.save(contact);
+        return studentRepository.save(student);
+    }
+
+    public Student addCourseToStudent(long student_id, long course_id) {
+        if (!studentRepository.existsById(student_id) || !courseRepository.existsById(course_id)) {
+            return null;
+        }
+
+        Student student = studentRepository.findById(student_id).get();
+        Course course = courseRepository.findById(course_id).get();
+
+        student.getCourses().add(course);
+        course.getStudents().add(student);
+
+        courseRepository.save(course);
+        return studentRepository.save(student);
+    }
 
 }
+
+

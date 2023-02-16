@@ -1,7 +1,9 @@
 package com.practice.studentproject.service;
 
 import com.practice.studentproject.model.Contact;
+import com.practice.studentproject.model.Student;
 import com.practice.studentproject.repository.ContactRepository;
+import com.practice.studentproject.repository.StudentRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,11 +12,11 @@ import java.util.Optional;
 
 @Service
 @Transactional
-
 public class ContactService {
 
     @Autowired
     ContactRepository contactRepository;
+
 
     // for CREATE
     public Contact newContact(Contact contact) {
@@ -50,6 +52,14 @@ public class ContactService {
         }
         return contactRepository.save(prevContact);
     }
+
+    // add contact to student
+    public Contact addContacttoStudent(Contact contact, Student student) {
+        contact.setStudent(student);
+        return contactRepository.save(contact);
+    }
+
+
 
     // for DELETE
     public void deleteContactById(long id) {

@@ -1,5 +1,6 @@
 package com.practice.studentproject.controller;
 
+import com.practice.studentproject.model.Contact;
 import com.practice.studentproject.model.Course;
 import com.practice.studentproject.model.School;
 import com.practice.studentproject.model.Student;
@@ -42,11 +43,17 @@ public class StudentController {
         return studentService.updateStudentById(id, student);
     }
 
-        // add course to student                                                                        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//    @PutMapping("/{id}/newcourse")
-//    public Student addCourseToStudent(@PathVariable(value = "id") long id, @RequestBody Course course) {
-//        return studentService.addCourseToStudent(id, course);
-//    }
+        // add contact to student
+    @PutMapping("/contact/{student_id}/{contact_id}")
+    public Student addContactToStudent(@PathVariable(value = "student_id") long student_id, @PathVariable(value = "contact_id") long contact_id) {
+        return studentService.addContactToStudent(student_id, contact_id);
+    }
+
+         //add course to student                                                                        !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+    @PutMapping("/course/{student_id}/{course_id}")
+    public Student addCourseToStudent(@PathVariable(value = "student_id") long student_id, @PathVariable(value = "course_id") long course_id) {
+        return studentService.addCourseToStudent(student_id, course_id);
+    }
 
 
     //DELETE
