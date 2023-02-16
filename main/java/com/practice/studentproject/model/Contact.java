@@ -2,8 +2,16 @@ package com.practice.studentproject.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Contact {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -16,42 +24,8 @@ public class Contact {
     @JsonIgnore
     private Student student;
 
-    // CONSTRUCTOR
-    public Contact() {}
+    // CONSTRUCTORS - lombok generated
 
-    public Contact(String name, String phone_nr, Student student) {
-        this.name = name;
-        this.phone_nr = phone_nr;
-        this.student = student;
-    }
+    // GETTERS AND SETTERS - lombok generated
 
-    // GETTERS AND SETTERS
-
-    public Long getId() {
-        return id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getPhone_nr() {
-        return phone_nr;
-    }
-
-    public void setPhone_nr(String phone_nr) {
-        this.phone_nr = phone_nr;
-    }
-
-    public Student getStudent() {
-        return student;
-    }
-
-    public void setStudent(Student student) {
-        this.student = student;
-    }
 }
