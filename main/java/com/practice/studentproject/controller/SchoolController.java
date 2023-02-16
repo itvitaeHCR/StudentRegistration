@@ -26,20 +26,20 @@ public class SchoolController {
 
     // READ
         //read one, by id
-    @GetMapping("/{id}")
+    @GetMapping("/read/{id}")
     public Optional<School> getSchoolById (@PathVariable(value = "id") Long id) {
         return schoolService.getSchoolById(id);
     }
 
         // read all
-    @GetMapping("/all")
+    @GetMapping("/read/all")
     public Iterable<School> getAllSchools() {
         return schoolService.getAllSchools();
     }
 
     // UPDATE
         // school by id
-    @PutMapping("/{id}")
+    @PutMapping("/update/{id}")
     public School updateSchoolById(@PathVariable(value = "id") Long id, @RequestBody School school) {
         return schoolService.updateSchoolById(id, school);
     }

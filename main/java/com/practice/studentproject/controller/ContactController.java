@@ -37,7 +37,7 @@ public class ContactController {
     }
 
     // Update
-    @PutMapping("update/{id}")
+    @PutMapping("/update/{id}")
     public Contact updateContactById(@PathVariable(value = "id") long id, @RequestBody Contact contact) {
         return contactService.updateContactById(id, contact);
     }

@@ -40,6 +40,10 @@ public class StudentService {
         return studentRepository.findById(id);
     }
 
+    public Iterable<Student> getStudentByName(String name) {
+        return studentRepository.findByName(name);
+    }
+
     //for UPDATE
     public Student updateStudentById(long id, Student student) {
         if (!studentRepository.existsById(id)) { // guard class
@@ -108,6 +112,7 @@ public class StudentService {
         courseRepository.save(course);
         return studentRepository.save(student);
     }
+
 
 }
 
