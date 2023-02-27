@@ -1,0 +1,54 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-family: "Comic Sans", cursive;
+  font-size: 62.5%;
+  background-color: #795F6C;
+}
+
+header {
+  background-color: #685268;
+  height: 10vh;
+  text-align: center;
+}
+header h1 {
+  color: #142F43;
+  text-shadow: #795f5f 2px 2px;
+  font-size: 3rem;
+}
+
+footer {
+  position: sticky;
+  bottom: 0;
+  height: 5vh;
+  background-color: #685268;
+}
+
+body {
+  min-height: 100vh;
+  margin: 10px;
+}
+
+main {
+  height: auto;
+  min-height: 80vh;
+}
+
+table {
+  background-color: #79795f;
+  text-shadow: #142F43 1px 1px;
+  font-family: "Courier New", Courier, monospace;
+  margin: 5px;
+}
+table th {
+  color: #FF5F7E;
+  font-size: 1.6rem;
+}
+table td {
+  color: #FFAB4C;
+  font-size: 1.3rem;
+}/*# sourceMappingURL=style.css.map */
